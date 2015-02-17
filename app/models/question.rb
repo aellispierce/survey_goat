@@ -8,4 +8,12 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :options,
       :allow_destroy => true,
       :reject_if     => :all_blank
+
+  def self.num_types
+    Question.select("question_type, count(*) AS count").
+       group(:question_type).
+       order("count(*)").all
+  end
+
+
 end

@@ -17,4 +17,11 @@ class Survey < ActiveRecord::Base
       q.question_type != "Choice" || q.options.length > 0
     end
   end
+
+  def self.titles_with_authors
+    Survey.joins(:author).
+           select("surveys.title, authors.email AS email").
+           order("surveys.id").all
+  end
+
 end
