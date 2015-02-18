@@ -25,13 +25,13 @@
 </header>
 
 <div class="showQuestionDiv">
-<% if @survey.complete? %>
-  <div class="copyLink">Copy and paste this link: https://surveygoat.herokuapp.com<%= new_submission_path(survey_id: @survey.id) %>
-  </div>
-<% else %>
-  <h3 class="errorMsg"><%= "Surveys must include at least one question, and multiple
-      choice questions must have at least two options." %></h3>
-<% end %>
+  <h1>To send someone a link to this survey, enter the recipients email address</h1>
+  <%= form_tag("send_mail") do %>
+  <p>Address: <%= email_field_tag :address %></p>
+  <%= submit_tag("Submit") %>
+  <% end %>
+
+
 
 
 <% @survey.questions.each do |q| %>

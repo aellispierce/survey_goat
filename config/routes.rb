@@ -6,8 +6,14 @@ Rails.application.routes.draw do
   get "sign_up" => "authors#new"
   resources :authors
   resources :submissions
-  resources :surveys
-  
+  resources :surveys do
+    collection do
+      get :email_form
+      get :send_mail
+      post :send_mail
+    end
+  end
+
   root 'surveys#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

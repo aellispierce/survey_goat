@@ -14,6 +14,10 @@ class SurveysController < ApplicationController
   def show
   end
 
+  def send_mail
+    SendMailer.invitation(params[:address], Survey.last.id).deliver_now
+  end
+
   # GET /surveys/new
   def new
     @survey = Survey.new

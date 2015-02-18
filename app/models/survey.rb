@@ -19,9 +19,9 @@ class Survey < ActiveRecord::Base
   end
 
   def self.titles_with_authors
+    #joins(“LEFT JOIN authors on surveys.author_id= authors.id”). select title, email as author_email.all
     Survey.joins(:author).
-           select("surveys.title, authors.email AS email").
-           order("surveys.id").all
+           select("surveys.title, authors.email AS author_email").all
   end
 
 end
