@@ -16,10 +16,10 @@
           <div class="pure-menu pure-menu-open">
             <ul>
               <li class="userNavInfo">
-                <% if current_user %>
+                <% if current_author %>
                   <span class="welcome">
                     <div>Welcome</div>
-                    <span class="user"><%= current_user.name %></span>
+                    <span class="user"><%= current_author.name %></span>
                     </span>
                   <div class="logout">
                     <button class="pure-button">

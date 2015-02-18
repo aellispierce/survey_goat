@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :authors
   get 'sessions/log_in'
   post 'sessions/log_in'
   get 'sessions/log_out'

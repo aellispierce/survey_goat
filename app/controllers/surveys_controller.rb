@@ -1,11 +1,11 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?
+  before_action :author_signed_in?
 
   # GET /surveys
   # GET /surveys.json
   def index
-    @author = Author.find_by_id(session[:author_id])
+    @author = current_author
     @surveys = @author.surveys.order("created_at desc")
   end
 
